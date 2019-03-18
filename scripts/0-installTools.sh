@@ -30,7 +30,7 @@ sudo ./hub-linux-amd64-2.10.0/install
 
 echo "----------------------------------------------------"
 echo "Installing git 'jq' utility ..."
-sudo yum install jq
+sudo yum -y install jq
 
 echo "----------------------------------------------------"
 echo "Downloading 'kubectl' ..."

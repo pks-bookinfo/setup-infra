@@ -1,0 +1,26 @@
+.project
+.DS_Store
+
+# locally clones application repos
+repositories
+
+# credentials file with personal tokens
+scripts/creds.json
+
+# installation logs
+scripts/logs/*.log
+
+# generated manifests
+manifests/gen/
+
+# terraform generated files
+terraform/.terraform*
+terraform/terraform.tfstate*
+terraform/*.yaml
+
+# pipeline generated files
+pipelines/gen/*.xml
+pipelines/gen/*.bak
+
+# any misc logs
+*.log

@@ -23,7 +23,7 @@ fi
 export DT_LATEST_RELEASE='v0.3.0'
 
 # set the registry to fixed location for the workshop in dockerhub
-export REGISTRY_URL=robjahn/
+export REGISTRY_URL=robjahn
 
 echo " "
 echo "===================================================="

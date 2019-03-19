@@ -43,7 +43,7 @@ for JOB_NAME in ratings details reviews productpage deploy-staging deploy-produc
   # update each copy of the job template file in gen folder with GIT org name
   # NOTE: Mac requires the name of backup file as an argument, Linux does not
   OSTYPE=$(uname -s)
-  if [[ "$OSTYPE" -eq Darwin ]]; then
+  if [ "$OSTYPE" -eq Darwin ]; then
     sed -i .bak s/ORG_PLACEHOLDER/$ORG/g ../pipelines/gen/$JOB_NAME.xml
   else
     sed -i s/ORG_PLACEHOLDER/$ORG/g ../pipelines/gen/$JOB_NAME.xml

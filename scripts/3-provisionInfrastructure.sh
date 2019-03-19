@@ -13,8 +13,8 @@ read -rsp $'Press ctrl-c to abort. Press any key to continue...\n===============
 export START_TIME=$(date)
 
 cd ../terraform
-#terraform init
-#terraform apply
+terraform init
+terraform apply
 
 echo "===================================================="
 echo "Finished provisioning AWS  "

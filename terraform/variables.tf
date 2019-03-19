@@ -4,6 +4,15 @@ variable "region" {
   description = "AWS Region such as us-east-1"
 }
 
+# when
+# max_subnet_count=0 (the default)
+# will deploy a subnet for every availablility zone within the region
+variable "availability_zones" {
+  type        = "list"
+  default     = ["us-east-1b", "us-east-1c", "us-east-1d"]
+  description = "Availability Zones for the cluster"
+}
+
 variable "tags" {
   type        = "map"
   default     = {}
@@ -137,15 +146,6 @@ variable "cpu_utilization_low_threshold_percent" {
   type        = "string"
   default     = "20"
   description = "Worker nodes AutoScaling Group CPU utilization low threshold percent"
-}
-
-# when
-# max_subnet_count=0 (the default)
-# will deploy a subnet for every availablility zone within the region
-variable "availability_zones" {
-  type        = "list"
-  default     = ["us-east-1b", "us-east-1c", "us-east-1d"]
-  description = "Availability Zones for the cluster"
 }
 
 variable "apply_config_map_aws_auth" {

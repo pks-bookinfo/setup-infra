@@ -6,7 +6,10 @@ NC='\033[0m'
 CREDS=./creds.json
 rm $CREDS 2> /dev/null
 
-echo -e "${YLW}Please enter the credentials as requested below: ${NC}"
+clear
+echo "==================================================================="
+echo -e "${YLW}Please enter the values as requested below: ${NC}"
+echo "==================================================================="
 read -p "Dynatrace Tenant ID (8-digits) (default=$DTENV): " DTENVC
 read -p "Dynatrace API Token (default=$DTAPI): " DTAPIC
 read -p "Dynatrace PaaS Token (default=$DTAPI): " DTPAAST

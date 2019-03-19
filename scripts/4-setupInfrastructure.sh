@@ -5,22 +5,19 @@ LOG_LOCATION=./logs
 exec > >(tee -i $LOG_LOCATION/setupInfrastructure.log)
 exec 2>&1
 
-# validate that have utlities such as kubectl installed first
-./0-validatePrerequisites.sh
+# validate that have utlities installed first
+./validatePrerequisites.sh
 if [ $? -ne 0 ]
 then
   exit 1
 fi
 
-echo -n "Validating Kubectl configured to cluster ... "
-export KUBECTL_CONFIG=$(kubectl -n kube-system get pods | grep Running | wc -l | tr -d '[:space:]')
-if [ $KUBECTL_CONFIG -eq 0 ]
+# validate that have kubectl configured first
+./validateKubectl.sh
+if [ $? -ne 0 ]
 then
-    echo ">>> Unable Connect to Cluster using kubectl.  Verify have configured ~/.kube/config file.  Verify cluster nodes are available."
-    echo ""
-    exit 1
+  exit 1
 fi
-echo "ok"
 
 # using fixed versus 'latest' version 
 export DT_LATEST_RELEASE='v0.3.0'

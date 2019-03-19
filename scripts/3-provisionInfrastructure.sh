@@ -21,3 +21,16 @@ echo "Finished provisioning AWS  "
 echo "===================================================="
 echo "Script start time : "$START_TIME
 echo "Script end time   : "$(date)
+
+echo ""
+echo "===================================================="
+echo "Copying generated terraform file into kubectl config"
+
+cp kubeconfig-jahn1-demo-app-cluster.yaml ~/.kube/config
+
+# validate that have kubectl configured first
+./validateKubectl.sh
+if [ $? -ne 0 ]
+then
+  exit 1
+fi

@@ -45,9 +45,9 @@ read -rsp $'Press ctrl-c to abort. Press any key to continue...\n===============
 
 declare -a repositories=("bookinfo-ratings" "bookinfo-details" "bookinfo-reviews" "bookinfo-productpage" "deploy-staging" "deploy-production")
 
-rm -rf ../repositories
-mkdir ../repositories
-cd ../repositories
+rm -rf ~/workspace/$ORG/repositories
+mkdir ~/workspace/$ORG/repositories
+cd ~/workspace/$ORG/repositories
 
 for repo in "${repositories[@]}"
 do
@@ -60,7 +60,7 @@ do
     echo -e "${YLW}Done. ${NC}"
 done
 
-cd ..
+cd ~/workspace/$ORG/
 rm -rf repositories
 mkdir repositories
 cd repositories

@@ -43,7 +43,7 @@ cp ./kubectl $HOME/bin/kubectl
 
 echo "----------------------------------------------------"
 echo "Downloading 'aws-iam-authenticator' ..."
-https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
+# https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
 rm aws-iam-authenticator
 curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
 echo "Installing 'aws-iam-authenticator' ..."

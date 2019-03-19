@@ -72,6 +72,7 @@ echo "----------------------------------------------------"
 echo "Deploying Jenkins ..."
 rm -f ../manifests/gen/k8s-jenkins-deployment.yml
 
+mkdir -p ../manifests/gen
 cat ../manifests/jenkins/k8s-jenkins-deployment.yml | \
   sed 's~GITHUB_USER_EMAIL_PLACEHOLDER~'"$GITHUB_USER_EMAIL"'~' | \
   sed 's~GITHUB_ORGANIZATION_PLACEHOLDER~'"$GITHUB_ORGANIZATION"'~' | \

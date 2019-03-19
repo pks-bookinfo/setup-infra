@@ -38,11 +38,12 @@ cp ../pipelines/*.xml ../pipelines/gen/
 echo 'Using GitHub Org : '$ORG
 echo 'Jenkins Server   : 'http://$JENKINS_URL:$JENKINS_URL_PORT
 
+OSTYPE=$(uname -s)
+
 for JOB_NAME in ratings details reviews productpage deploy-staging deploy-production; do
 
   # update each copy of the job template file in gen folder with GIT org name
   # NOTE: Mac requires the name of backup file as an argument, Linux does not
-  OSTYPE=$(uname -s)
   if [ "$OSTYPE" -eq Darwin ]; then
     sed -i .bak s/ORG_PLACEHOLDER/$ORG/g ../pipelines/gen/$JOB_NAME.xml
   else

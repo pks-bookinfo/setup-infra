@@ -35,6 +35,14 @@ then
     exit 1
 fi
 
+echo "===================================================="
+echo About to fork github repositories with these parameters:
+echo ""
+echo "Source : https://github.com/$SOURCE_GIT_ORG"
+echo "Target : https://github.com/$ORG"
+echo ""
+read -rsp $'Press ctrl-c to abort. Press any key to continue...\n"===================================================="' -n1 key
+
 declare -a repositories=("ratings" "details" "reviews" "productpage" "deploy-staging" "deploy-production")
 
 rm -rf ../repositories

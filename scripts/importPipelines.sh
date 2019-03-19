@@ -37,7 +37,8 @@ cp ../pipelines/*.xml ../pipelines/gen/
 # loop through a list of jobs and create them.  if already exists, delete it first
 echo 'Using GitHub Org : '$ORG
 echo 'Jenkins Server   : 'http://$JENKINS_URL:$JENKINS_URL_PORT
-for JOB_NAME in order-service catalog-service customer-service front-end deploy-staging deploy-production; do
+
+for JOB_NAME in ratings details reviews productpage deploy-staging deploy-production; do
 
   # update each copy of the job template file in gen folder with GIT org name
   # NOTE: Mac requires the name of backup file as an argument, Linux does not

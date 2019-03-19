@@ -36,7 +36,7 @@ echo ""
 echo "Using Dynatrace OneAgent Operator version : $DT_LATEST_RELEASE"
 echo "Using DockerHub registry : $REGISTRY_URL"
 echo ""
-read -rsp $'Press ctrl-c to abort. Press any key to continue...\n"===================================================="' -n1 key
+read -rsp $'Press ctrl-c to abort. Press any key to continue...\n====================================================' -n1 key
 
 export START_TIME=$(date)
 export JENKINS_USER=$(cat creds.json | jq -r '.jenkinsUser')

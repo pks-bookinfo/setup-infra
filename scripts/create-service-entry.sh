@@ -25,6 +25,6 @@ cat se_tmp/hosts >> se_tmp/service_entries_oneagent.yml
 cat ../manifests/istio/service_entries_tpl/part3 >> se_tmp/service_entries_oneagent.yml
 cat se_tmp/service_entries >> se_tmp/service_entries_oneagent.yml
 
-kubectl apply -f se_tmp/service_entries_oneagent.yml
+#kubectl apply -f se_tmp/service_entries_oneagent.yml
 
-rm -rf se_tmp
+#rm -rf se_tmp

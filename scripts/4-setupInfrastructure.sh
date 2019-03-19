@@ -19,9 +19,6 @@ then
   exit 1
 fi
 
-# using fixed versus 'latest' version 
-export DT_LATEST_RELEASE='v0.3.0'
-
 # set the registry to fixed location for the workshop in dockerhub
 export REGISTRY_URL=robjahn
 
@@ -44,7 +41,7 @@ export GITHUB_ORGANIZATION=$(cat creds.json | jq -r '.githubOrg')
 export DT_TENANT_ID=$(cat creds.json | jq -r '.dynatraceTenant')
 export DT_API_TOKEN=$(cat creds.json | jq -r '.dynatraceApiToken')
 export DT_PAAS_TOKEN=$(cat creds.json | jq -r '.dynatracePaaSToken')
-export DT_TENANT_URL="$DT_TENANT_ID.live.dynatrace.com"
+export DT_TENANT_URL="$DT_TENANT_ID"
 
 echo "----------------------------------------------------"
 echo "Creating K8s namespaces ..."
@@ -97,27 +94,6 @@ echo "Jenkins is running @ : http://$JENKINS_URL:$JENKINS_URL_PORT"
 echo "Admin user           : $JENKINS_USER"
 echo "Admin password       : $JENKINS_PASSWORD"
 
-echo "----------------------------------------------------"
-echo "Installing Dynatrace Operator $DT_LATEST_RELEASE ..."
-kubectl create -f https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/$DT_LATEST_RELEASE/deploy/kubernetes.yaml
-
-echo "----------------------------------------------------"
-echo "Letting Dynatrace OneAgent operator start up [60 seconds] ..."
-sleep 60
-
-echo "----------------------------------------------------"
-echo "Deploying Dynatrace OneAgent pods ..."
-kubectl -n dynatrace create secret generic oneagent --from-literal="apiToken=$DT_API_TOKEN" --from-literal="paasToken=$DT_PAAS_TOKEN"
-
-if [ -f ../manifests/gen/cr.yml ]; then
-  rm -f ../manifests/gen/cr.yml
-fi
-
-mkdir -p ../manifests/gen/dynatrace
-curl -o ../manifests/gen/dynatrace/cr.yml https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/$DT_LATEST_RELEASE/deploy/cr.yaml
-cat ../manifests/gen/dynatrace/cr.yml | sed 's/ENVIRONMENTID/'"$DT_TENANT_ID"'/' >> ../manifests/gen/cr.yml
-
-kubectl create -f ../manifests/gen/cr.yml
 
 echo "----------------------------------------------------"
 echo "Apply auto tagging rules in Dynatrace ..."

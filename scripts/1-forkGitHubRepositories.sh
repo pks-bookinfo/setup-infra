@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOURCE_GIT_ORG=dt-bookinginfo
+SOURCE_GIT_ORG=pks-bookinginfo
 LOG_LOCATION=./logs
 exec > >(tee -i $LOG_LOCATION/forkGitHubRepositories.log)
 exec 2>&1

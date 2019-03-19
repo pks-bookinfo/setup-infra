@@ -13,8 +13,8 @@ read -rsp $'Press ctrl-c to abort. Press any key to continue...\n===============
 export START_TIME=$(date)
 
 cd ../terraform
-terraform init
-terraform apply
+#terraform init
+#terraform apply
 
 echo "===================================================="
 echo "Finished provisioning AWS  "
@@ -26,9 +26,10 @@ echo ""
 echo "===================================================="
 echo "Copying generated terraform file into kubectl config"
 
-cp kubeconfig-jahn1-demo-app-cluster.yaml ~/.kube/config
+cp kubeconfig-*-cluster.yaml ~/.kube/config
 
 # validate that have kubectl configured first
+cd ../scripts
 ./validateKubectl.sh
 if [ $? -ne 0 ]
 then
